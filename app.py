@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from libros import LIBROS
-import sqlite3
+import psycopg2
+import psycopg2.extras
 import secrets
 import os
 from datetime import datetime
@@ -13,10 +14,8 @@ app.secret_key = os.environ.get(
     "clave-local-biblioteca"
 )
 
-DATABASE = os.environ.get(
-    "DATABASE_PATH",
-    "biblioteca.db"
-)
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
 
 ADMIN_PASSWORD = os.environ.get(
     "ADMIN_PASSWORD",
@@ -30,9 +29,7 @@ ADMIN_PASSWORD = os.environ.get(
 
 def conectar():
 
-    conexion = sqlite3.connect(DATABASE)
-
-    conexion.row_factory = sqlite3.Row
+    conexion = psycopg2.connect(DATABASE_URL)
 
     return conexion
 
@@ -45,10 +42,12 @@ def crear_base_datos():
 
     conexion = conectar()
 
-    conexion.execute("""
+    cursor = conexion.cursor()
+
+    cursor.execute("""
         CREATE TABLE IF NOT EXISTS prestamos (
 
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
 
             codigo TEXT UNIQUE NOT NULL,
 
@@ -69,10 +68,14 @@ def crear_base_datos():
 
     conexion.commit()
 
+    cursor.close()
+
     conexion.close()
 
 
-crear_base_datos()
+# Solo crear la tabla cuando exista una conexión
+if DATABASE_URL:
+    crear_base_datos()
 
 
 # ==========================================
@@ -83,18 +86,24 @@ def disponibles(indice):
 
     conexion = conectar()
 
-    prestados = conexion.execute(
+    cursor = conexion.cursor()
+
+    cursor.execute(
         """
         SELECT COUNT(*)
 
         FROM prestamos
 
-        WHERE libro = ?
+        WHERE libro = %s
 
         AND estado IN ('prestado', 'pendiente')
         """,
         (indice,)
-    ).fetchone()[0]
+    )
+
+    prestados = cursor.fetchone()[0]
+
+    cursor.close()
 
     conexion.close()
 
@@ -115,16 +124,22 @@ def generar_codigo():
 
         conexion = conectar()
 
-        existe = conexion.execute(
+        cursor = conexion.cursor()
+
+        cursor.execute(
             """
             SELECT id
 
             FROM prestamos
 
-            WHERE codigo = ?
+            WHERE codigo = %s
             """,
             (codigo,)
-        ).fetchone()
+        )
+
+        existe = cursor.fetchone()
+
+        cursor.close()
 
         conexion.close()
 
@@ -289,7 +304,9 @@ def solicitar(indice):
 
         conexion = conectar()
 
-        conexion.execute(
+        cursor = conexion.cursor()
+
+        cursor.execute(
             """
             INSERT INTO prestamos
             (
@@ -302,7 +319,7 @@ def solicitar(indice):
                 fecha
             )
 
-            VALUES (?, ?, ?, ?, 'pendiente', 0, ?)
+            VALUES (%s, %s, %s, %s, 'pendiente', 0, %s)
             """,
             (
                 codigo,
@@ -316,6 +333,8 @@ def solicitar(indice):
         )
 
         conexion.commit()
+
+        cursor.close()
 
         conexion.close()
 
@@ -359,16 +378,24 @@ def mis_prestamos():
 
         conexion = conectar()
 
-        resultados = conexion.execute(
+        cursor = conexion.cursor(
+            cursor_factory=psycopg2.extras.RealDictCursor
+        )
+
+        cursor.execute(
             """
             SELECT *
 
             FROM prestamos
 
-            WHERE codigo = ?
+            WHERE codigo = %s
             """,
             (codigo,)
-        ).fetchall()
+        )
+
+        resultados = cursor.fetchall()
+
+        cursor.close()
 
         conexion.close()
 
@@ -393,13 +420,15 @@ def solicitar_devolucion(id):
 
     conexion = conectar()
 
-    conexion.execute(
+    cursor = conexion.cursor()
+
+    cursor.execute(
         """
         UPDATE prestamos
 
         SET devolucion_solicitada = 1
 
-        WHERE id = ?
+        WHERE id = %s
 
         AND estado = 'prestado'
         """,
@@ -407,6 +436,8 @@ def solicitar_devolucion(id):
     )
 
     conexion.commit()
+
+    cursor.close()
 
     conexion.close()
 
@@ -435,13 +466,15 @@ def confirmar_entrega(id):
 
     conexion = conectar()
 
-    conexion.execute(
+    cursor = conexion.cursor()
+
+    cursor.execute(
         """
         UPDATE prestamos
 
         SET estado = 'prestado'
 
-        WHERE id = ?
+        WHERE id = %s
 
         AND estado = 'pendiente'
         """,
@@ -449,6 +482,8 @@ def confirmar_entrega(id):
     )
 
     conexion.commit()
+
+    cursor.close()
 
     conexion.close()
 
@@ -477,11 +512,13 @@ def rechazar_solicitud(id):
 
     conexion = conectar()
 
-    conexion.execute(
+    cursor = conexion.cursor()
+
+    cursor.execute(
         """
         DELETE FROM prestamos
 
-        WHERE id = ?
+        WHERE id = %s
 
         AND estado = 'pendiente'
         """,
@@ -489,6 +526,8 @@ def rechazar_solicitud(id):
     )
 
     conexion.commit()
+
+    cursor.close()
 
     conexion.close()
 
@@ -550,7 +589,11 @@ def admin():
 
     conexion = conectar()
 
-    prestamos = conexion.execute(
+    cursor = conexion.cursor(
+        cursor_factory=psycopg2.extras.RealDictCursor
+    )
+
+    cursor.execute(
         """
         SELECT *
 
@@ -560,7 +603,11 @@ def admin():
 
         ORDER BY id DESC
         """
-    ).fetchall()
+    )
+
+    prestamos = cursor.fetchall()
+
+    cursor.close()
 
     conexion.close()
 
@@ -591,7 +638,9 @@ def confirmar_devolucion(id):
 
     conexion = conectar()
 
-    conexion.execute(
+    cursor = conexion.cursor()
+
+    cursor.execute(
         """
         UPDATE prestamos
 
@@ -599,12 +648,14 @@ def confirmar_devolucion(id):
 
             devolucion_solicitada = 0
 
-        WHERE id = ?
+        WHERE id = %s
         """,
         (id,)
     )
 
     conexion.commit()
+
+    cursor.close()
 
     conexion.close()
 
