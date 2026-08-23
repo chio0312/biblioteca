@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Mi Biblioteca
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="hero">
+
+    <h1>
+        📚 Biblioteca
+    </h1>
+
+    <p>
+        Explora nuestra colección de libros.
+    </p>
+
+
+    <form
+        action="{{ url_for('inicio') }}"
+        method="GET"
+        class="buscador"
+    >
+
+        <input
+            type="text"
+            name="buscar"
+            placeholder="🔎 Buscar libro, autor o categoría..."
+            value="{{ busqueda }}"
+        >
+
+        <button type="submit">
+            Buscar
+        </button>
+
+    </form>
+
+</div>
+
+
+
+{% if busqueda %}
+
+
+<h2>
+    🔎 Resultados para "{{ busqueda }}"
+</h2>
+
+
+{% if resultados %}
+
+
+<div class="lista-libros">
+
+
+    {% for libro in resultados %}
+
+
+    <div class="tarjeta-libro">
+
+
+        <h2>
+            {{ libro.titulo }}
+        </h2>
+
+
+        <p>
+            {{ libro.autor }}
+        </p>
+
+
+        {% if libro.disponibles > 0 %}
+
+            <p class="disponible">
+                🟢 {{ libro.disponibles }}
+                disponibles
+            </p>
+
+        {% else %}
+
+            <p class="agotado">
+                🔴 Agotado
+            </p>
+
+        {% endif %}
+
+
+        <a
+            href="{{ url_for(
+                'ver_libro',
+                indice=libro.indice
+            ) }}"
+            class="boton-solicitar"
+        >
+
+            📖 Ver libro
+
+        </a>
+
+
+    </div>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+{% else %}
+
+
+<div class="sin-prestamos">
+
+    😭
+
+    <h2>
+        No encontramos ese libro.
+    </h2>
+
+</div>
+
+
+{% endif %}
+
+
+
+{% else %}
+
+
+
+{% for categoria, libros in categorias.items() %}
+
+
+<section class="seccion-categoria">
+
+
+    <h2>
+        {{ categoria }}
+    </h2>
+
+
+    <div class="lista-libros">
+
+
+        {% for libro in libros %}
+
+
+        <div class="tarjeta-libro">
+
+
+            <h2>
+                {{ libro.titulo }}
+            </h2>
+
+
+            <p>
+                {{ libro.autor }}
+            </p>
+
+
+            {% if libro.disponibles > 0 %}
+
+                <p class="disponible">
+
+                    🟢 {{ libro.disponibles }}
+                    disponibles
+
+                </p>
+
+            {% else %}
+
+                <p class="agotado">
+
+                    🔴 Agotado
+
+                </p>
+
+            {% endif %}
+
+
+            <a
+                href="{{ url_for(
+                    'ver_libro',
+                    indice=libro.indice
+                ) }}"
+                class="boton-solicitar"
+            >
+
+                📖 Ver libro
+
+            </a>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</section>
+
+
+{% endfor %}
+
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ categoria }} - Mi Biblioteca</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="/" class="logo">
+
+        📚 Mi Biblioteca
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <a href="/" class="volver">
+
+        ← Volver a la biblioteca
+
+    </a>
+
+
+    <h1>
+
+        📚 {{ categoria }}
+
+    </h1>
+
+
+    <p>
+
+        {{ libros|length }} libros registrados
+
+    </p>
+
+
+
+    <div class="libros">
+
+
+        {% for libro in libros %}
+
+
+        <a
+            href="{{ url_for('ver_libro', indice=loop.index0) }}"
+            class="tarjeta enlace-libro"
+        >
+
+
+            <div class="portada">
+
+                📖
+
+            </div>
+
+
+            <h3>
+
+                {{ libro.titulo }}
+
+            </h3>
+
+
+            <p>
+
+                {{ libro.autor }}
+
+            </p>
+
+
+            {% if libro.ejemplares > 0 %}
+
+
+                <p>
+
+                    🟢 {{ libro.ejemplares }}
+
+                    ejemplares
+
+                </p>
+
+
+            {% else %}
+
+
+                <p>
+
+                    🔴 No disponible
+
+                </p>
+
+
+            {% endif %}
+
+
+        </a>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

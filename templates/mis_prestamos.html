@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Mis préstamos
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="formulario">
+
+    <h1>
+        📋 Mis préstamos
+    </h1>
+
+
+    <p>
+        Ingresa el código que recibiste al solicitar tu libro.
+    </p>
+
+
+    <form method="POST">
+
+
+        <label>
+            Código de préstamo
+        </label>
+
+
+        <input
+            type="text"
+            name="codigo"
+            placeholder="Ejemplo: BIB-A1B2C3"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="boton-solicitar"
+        >
+
+            🔎 Consultar
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+
+{% if prestamos %}
+
+
+<div class="lista-prestamos">
+
+
+{% for prestamo in prestamos %}
+
+
+<div class="prestamo">
+
+
+    <h2>
+
+        📖
+        {{ libros[prestamo["libro"]]["titulo"] }}
+
+    </h2>
+
+
+    <p>
+
+        👤
+        <strong>
+            {{ prestamo["nombre"] }}
+        </strong>
+
+    </p>
+
+
+    <p>
+
+        🎓
+        {{ prestamo["grado"] }}
+
+    </p>
+
+
+    <p>
+
+        🔑 Código:
+
+        <strong>
+            {{ prestamo["codigo"] }}
+        </strong>
+
+    </p>
+
+
+    <p>
+
+        📅
+        {{ prestamo["fecha"] }}
+
+    </p>
+
+
+
+    {% if prestamo["estado"] == "devuelto" %}
+
+
+        <p class="disponible">
+
+            🟢 LIBRO DEVUELTO
+
+        </p>
+
+
+    {% elif prestamo["devolucion_solicitada"] %}
+
+
+        <p class="estado-prestamo">
+
+            🟡 DEVOLUCIÓN SOLICITADA
+
+        </p>
+
+
+        <p>
+
+            Espera a que la biblioteca confirme
+            la devolución.
+
+        </p>
+
+
+    {% else %}
+
+
+        <p class="estado-prestamo">
+
+            🟡 PRESTADO
+
+        </p>
+
+
+        <form
+            action="{{ url_for(
+                'solicitar_devolucion',
+                id=prestamo['id']
+            ) }}"
+            method="POST"
+        >
+
+
+            <button
+                type="submit"
+                class="boton-devolver"
+            >
+
+                🔄 Solicitar devolución
+
+            </button>
+
+
+        </form>
+
+
+    {% endif %}
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+{% elif codigo %}
+
+
+<div class="sin-prestamos">
+
+    😭
+
+    <h2>
+        No encontramos ese préstamo.
+    </h2>
+
+    <p>
+        Revisa que el código esté escrito correctamente.
+    </p>
+
+</div>
+
+
+{% endif %}
+
+
+{% endblock %}

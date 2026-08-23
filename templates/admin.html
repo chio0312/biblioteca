@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Panel de administración
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="admin-bar">
+
+
+    <h1>
+        📋 Panel de préstamos
+    </h1>
+
+
+    <a
+        href="{{ url_for('admin_logout') }}"
+        class="boton-devolver"
+    >
+
+        Cerrar sesión
+
+    </a>
+
+
+</div>
+
+
+
+{% if prestamos %}
+
+
+<div class="lista-prestamos">
+
+
+{% for prestamo in prestamos %}
+
+
+<div class="prestamo">
+
+
+    <h2>
+
+        📖
+        {{ libros[prestamo["libro"]]["titulo"] }}
+
+    </h2>
+
+
+    <p>
+
+        👤
+        <strong>
+            {{ prestamo["nombre"] }}
+        </strong>
+
+    </p>
+
+
+    <p>
+
+        🎓
+        {{ prestamo["grado"] }}
+
+    </p>
+
+
+    <p>
+
+        🔑
+        {{ prestamo["codigo"] }}
+
+    </p>
+
+
+    <p>
+
+        📅
+        {{ prestamo["fecha"] }}
+
+    </p>
+
+
+
+    {% if prestamo["estado"] == "pendiente" %}
+
+
+        <p class="estado-prestamo">
+
+            🟡 SOLICITUD PENDIENTE
+
+        </p>
+
+
+        <p>
+
+            El estudiante debe presentarse
+            físicamente en la biblioteca para
+            recibir el libro.
+
+        </p>
+
+
+        <form
+            action="{{ url_for(
+                'confirmar_entrega',
+                id=prestamo['id']
+            ) }}"
+            method="POST"
+        >
+
+            <button
+                type="submit"
+                class="boton-devolver"
+            >
+
+                📚 Confirmar entrega
+
+            </button>
+
+        </form>
+
+
+        <br>
+
+
+        <form
+            action="{{ url_for(
+                'rechazar_solicitud',
+                id=prestamo['id']
+            ) }}"
+            method="POST"
+        >
+
+            <button
+                type="submit"
+                class="boton-devolver"
+            >
+
+                ❌ Rechazar solicitud
+
+            </button>
+
+        </form>
+
+
+
+    {% elif prestamo["estado"] == "prestado" %}
+
+
+        {% if prestamo["devolucion_solicitada"] %}
+
+
+            <p class="estado-prestamo">
+
+                🟡 SOLICITÓ DEVOLUCIÓN
+
+            </p>
+
+
+            <form
+                action="{{ url_for(
+                    'confirmar_devolucion',
+                    id=prestamo['id']
+                ) }}"
+                method="POST"
+            >
+
+
+                <button
+                    type="submit"
+                    class="boton-devolver"
+                >
+
+                    ✅ Confirmar devolución
+
+                </button>
+
+
+            </form>
+
+
+        {% else %}
+
+
+            <p class="estado-prestamo">
+
+                🟢 PRESTADO
+
+            </p>
+
+
+            <p>
+
+                El estudiante todavía no ha
+                solicitado devolución.
+
+            </p>
+
+
+        {% endif %}
+
+
+    {% endif %}
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+
+{% else %}
+
+
+<div class="sin-prestamos">
+
+
+    📚
+
+
+    <h2>
+        No hay solicitudes ni préstamos activos.
+    </h2>
+
+
+    <p>
+        Todos los libros están disponibles.
+    </p>
+
+
+</div>
+
+
+{% endif %}
+
+
+{% endblock %}

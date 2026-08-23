@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Préstamos - Mi Biblioteca</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="/" class="logo">
+
+        📚 Mi Biblioteca
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <a href="/" class="volver">
+
+        ← Volver a la biblioteca
+
+    </a>
+
+
+    <h1>
+
+        📋 Préstamos
+
+    </h1>
+
+
+    {% if prestamos %}
+
+
+        <div class="lista-prestamos">
+
+
+            {% for prestamo in prestamos %}
+
+
+                <div class="prestamo">
+
+
+                    <h2>
+
+                        📖 {{ libros[prestamo["libro"]]["titulo"] }}
+
+                    </h2>
+
+
+                    <p>
+
+                        👤
+
+                        <strong>
+
+                            {{ prestamo["nombre"] }}
+
+                        </strong>
+
+                    </p>
+
+
+                    <p>
+
+                        🎓 {{ prestamo["grado"] }}
+
+                    </p>
+
+
+                    <p class="estado-prestamo">
+
+                        🟡 PRESTADO
+
+                    </p>
+
+
+                    <form
+                        action="{{ url_for('devolver', id=prestamo['id']) }}"
+                        method="POST"
+                    >
+
+                        <button
+                            type="submit"
+                            class="boton-devolver"
+                        >
+
+                            🔄 DEVOLVER LIBRO
+
+                        </button>
+
+                    </form>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+    {% else %}
+
+
+        <div class="sin-prestamos">
+
+            📚
+
+            <h2>
+
+                No hay libros prestados
+
+            </h2>
+
+            <p>
+
+                Todos los libros están disponibles.
+
+            </p>
+
+        </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

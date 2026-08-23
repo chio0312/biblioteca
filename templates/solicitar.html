@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Solicitar libro</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="/" class="logo">
+
+        📚 Mi Biblioteca
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <a
+        href="{{ url_for('ver_libro', indice=indice) }}"
+        class="volver"
+    >
+
+        ← Volver al libro
+
+    </a>
+
+
+
+    <div class="formulario">
+
+
+        <h1>
+
+            📕 Solicitar libro
+
+        </h1>
+
+
+        <h2>
+
+            {{ libro.titulo }}
+
+        </h2>
+
+
+        <p>
+
+            Autor: {{ libro.autor }}
+
+        </p>
+
+
+
+        <form method="POST">
+
+
+            <label>
+
+                Nombre completo
+
+            </label>
+
+
+            <input
+                type="text"
+                name="nombre"
+                placeholder="Escribe tu nombre"
+                required
+            >
+
+
+
+            <label>
+
+                Grado
+
+            </label>
+
+
+            <input
+                type="text"
+                name="grado"
+                placeholder="Ejemplo: 5to Bachillerato"
+                required
+            >
+
+
+
+            <button
+                type="submit"
+                class="boton-solicitar"
+            >
+
+                📕 Confirmar solicitud
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

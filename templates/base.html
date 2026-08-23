@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Mi Biblioteca
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header class="barra-navegacion">
+
+    <a
+        href="{{ url_for('inicio') }}"
+        class="logo"
+    >
+
+        📚 Mi Biblioteca
+
+    </a>
+
+
+    <nav>
+
+        <a href="{{ url_for('inicio') }}">
+            🏠 Inicio
+        </a>
+
+
+        <a href="{{ url_for('mis_prestamos') }}">
+            📋 Mis préstamos
+        </a>
+
+
+        <a href="{{ url_for('admin_login') }}">
+            🔐 Administración
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    {% block content %}
+
+    {% endblock %}
+
+</main>
+
+
+</body>
+
+</html>

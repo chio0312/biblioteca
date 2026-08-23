@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+
+Administración
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="formulario">
+
+
+    <h1>
+        🔐 Administración
+    </h1>
+
+
+    <p>
+        Área exclusiva de la biblioteca.
+    </p>
+
+
+    {% if error %}
+
+        <p class="agotado">
+            {{ error }}
+        </p>
+
+    {% endif %}
+
+
+    <form method="POST">
+
+
+        <label>
+            Contraseña
+        </label>
+
+
+        <input
+            type="password"
+            name="password"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="boton-solicitar"
+        >
+
+            🔐 Entrar
+
+        </button>
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}

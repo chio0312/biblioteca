@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solicitud registrada</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="/" class="logo">
+
+        📚 Mi Biblioteca
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <div class="exito">
+
+
+        <div class="check">
+
+            ✅
+
+        </div>
+
+
+        <h1>
+
+            ¡Solicitud registrada!
+
+        </h1>
+
+
+        <h2>
+
+            {{ libro.titulo }}
+
+        </h2>
+
+
+        <p>
+
+            Solicitud realizada por:
+
+        </p>
+
+
+        <strong>
+
+            {{ nombre }}
+
+        </strong>
+
+
+        <p>
+
+            Grado:
+
+        </p>
+
+
+        <strong>
+
+            {{ grado }}
+
+        </strong>
+
+
+        <p>
+
+            🔑 Código de préstamo:
+
+        </p>
+
+
+        <strong>
+
+            {{ codigo }}
+
+        </strong>
+
+
+        <p>
+
+            🟡 Estado:
+
+        </p>
+
+
+        <strong>
+
+            PENDIENTE DE ENTREGA
+
+        </strong>
+
+
+        <p>
+
+            Presenta tu código en la biblioteca
+            para que la solicitud sea verificada
+            y se realice la entrega del libro.
+
+        </p>
+
+
+        <p>
+
+            📚 Ejemplares restantes:
+
+        </p>
+
+
+        <strong>
+
+            {{ libro.ejemplares }}
+
+        </strong>
+
+
+        <br><br>
+
+
+        <a
+            href="/"
+            class="boton-solicitar"
+        >
+
+            🏠 Volver a la biblioteca
+
+        </a>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

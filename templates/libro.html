@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ libro.titulo }} - Mi Biblioteca</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <a href="/" class="logo">
+
+        📚 Mi Biblioteca
+
+    </a>
+
+</header>
+
+
+
+<main>
+
+
+    <a href="/" class="volver">
+
+        ← Volver a la biblioteca
+
+    </a>
+
+
+
+    <div class="detalle-libro">
+
+
+        <div class="portada-grande">
+
+            📖
+
+        </div>
+
+
+
+        <div class="informacion-libro">
+
+
+            <p class="categoria-libro">
+
+                {{ libro.categoria }}
+
+            </p>
+
+
+            <h1>
+
+                {{ libro.titulo }}
+
+            </h1>
+
+
+            <h2>
+
+                {{ libro.autor }}
+
+            </h2>
+
+
+
+            <div class="disponibilidad">
+
+
+                {% if libro.ejemplares > 0 %}
+
+
+                    <span class="disponible">
+
+                        🟢 DISPONIBLE
+
+                    </span>
+
+
+                    <p>
+
+                        📚 {{ libro.ejemplares }}
+
+                        ejemplares disponibles
+
+                    </p>
+
+
+                    <a
+                        href="{{ url_for('solicitar', indice=indice) }}"
+                        class="boton-solicitar"
+                    >
+
+                        📕 SOLICITAR LIBRO
+
+                    </a>
+
+
+                {% else %}
+
+
+                    <span class="agotado">
+
+                        🔴 NO DISPONIBLE
+
+                    </span>
+
+
+                    <p>
+
+                        Actualmente no hay ejemplares disponibles.
+
+                    </p>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>
