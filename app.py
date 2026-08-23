@@ -2,16 +2,26 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from libros import LIBROS
 import sqlite3
 import secrets
+import os
 from datetime import datetime
 
 
 app = Flask(__name__)
 
-app.secret_key = "clave-biblioteca-2026"
+app.secret_key = os.environ.get(
+    "SECRET_KEY",
+    "clave-local-biblioteca"
+)
 
-DATABASE = "biblioteca.db"
+DATABASE = os.environ.get(
+    "DATABASE_PATH",
+    "biblioteca.db"
+)
 
-ADMIN_PASSWORD = "biblioteca123"
+ADMIN_PASSWORD = os.environ.get(
+    "ADMIN_PASSWORD",
+    "biblioteca123"
+)
 
 
 # ==========================================
@@ -624,4 +634,7 @@ def admin_logout():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000))
+    )
