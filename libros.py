@@ -191,7 +191,7 @@ LIBROS = [
         "titulo": "Spiderman",
         "autor": "Stan Lee",
         "categoria": "Heroes",
-        "ejemplares" 1
+        "ejemplares": 1
     }
 
 ]
