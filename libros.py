@@ -176,4 +176,22 @@ LIBROS = [
         "ejemplares": 2
     }
 
+    # TERROR
+
+    {
+        "titulo": "La historia de Jeff",
+        "autor": "Jeff the killer",
+        "categoria": "Terror",
+        "ejemplares": 2
+    }
+
+    #Heroes
+
+    {
+        "titulo": "Spiderman",
+        "autor": "Stan Lee",
+        "categoria": "Heroes"
+        "ejemplares" 1
+    }
+
 ]
