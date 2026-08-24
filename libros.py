@@ -174,7 +174,7 @@ LIBROS = [
         "autor": "Varios",
         "categoria": "Derecho / documentos políticos",
         "ejemplares": 2
-    }
+    },
 
     # TERROR
 
@@ -183,7 +183,7 @@ LIBROS = [
         "autor": "Jeff the killer",
         "categoria": "Terror",
         "ejemplares": 2
-    }
+    },
 
     #Heroes
 
