@@ -530,4 +530,5 @@ LIBROS = [
         "categoria": "Geografía",
         "ejemplares": 1
     }
+    
 ]
