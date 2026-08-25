@@ -489,7 +489,7 @@ LIBROS = [
     {
         "titulo": "Quién se ha llevado mi queso?",
         "autor": "Spencer Johnson",
-        "categoria": "Idiomas",
+        "categoria": "Motivacionales",
         "ejemplares": 1
     }
 
@@ -527,7 +527,7 @@ LIBROS = [
     {
         "titulo": "Guía Visualizada CENTROAMÉRICA",
         "autor": "Julio Piedrasanta",
-        "categoria": "Idiomas",
+        "categoria": "Geografía",
         "ejemplares": 1
     }
 ]
