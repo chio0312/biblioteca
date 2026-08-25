@@ -140,7 +140,7 @@ LIBROS = [
         "ejemplares": 1
     },
 
-      {
+    {
         "titulo": "Memorias de un abogado",
         "autor": "Jose Milla",
         "categoria": "Novelas y narrativas",
@@ -409,7 +409,7 @@ LIBROS = [
         "autor": "Miguel Angel Asturias",
         "categoria": "Cuentos y Leyendas",
         "ejemplares": 1
-    },
+    }
 
     #BIOGRAFIAS
 
@@ -418,9 +418,9 @@ LIBROS = [
         "autor": "Juan Regla Campistol",
         "categoria": "Biografias",
         "ejemplares": 1
-    },
+    }
 
-    #MOTIVACIÓN
+    # MOTIVACIÓN
 
     {
         "titulo": "Date un chance",
