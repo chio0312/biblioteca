@@ -46,7 +46,7 @@ LIBROS = [
         "titulo": "El Principito",
         "autor": "Antoine de Saint-Exupéry",
         "categoria": "Novelas y narrativa",
-        "ejemplares": 4
+        "ejemplares": 7
     },
 
     {
@@ -148,7 +148,7 @@ LIBROS = [
     },
 
     {
-        "titulo": "El tunes",
+        "titulo": "El tunel",
         "autor": "Ernesto Sabato",
         "categoria": "Novelas y narrativas",
         "ejemplares": 3
@@ -208,7 +208,44 @@ LIBROS = [
         "autor": "Juan Manuel Salazar",
         "categoria": "Novelas y narrativas",
         "ejemplares": 1
+    },
+
+    {
+        "titulo": "Maria",
+        "autor": "Jorge Issac",
+        "categoria": "Novelas y narrativas",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "Los Cachorros",
+        "autor": "Mario Vargas",
+        "categoria": "Novelas y narrativas",
+        "ejemplares": 3
+    },
+
+    {
+        "titulo": "Los fantasmas de picos de cuervos",
+        "autor": "Hugh Scott",
+        "categoria": "Novelas y narrativas",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "Mascara segunda",
+        "autor": "Alfonso Barrientos",
+        "categoria": "Novelas y narrativas",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "El propietario de la catedral",
+        "autor": "Roger Judenne",
+        "categoria": "Novelas y narrativas",
+        "ejemplares": 1
     }
+
+
 
     # POESÍA
 
@@ -266,8 +303,44 @@ LIBROS = [
         "autor": "Rúben Dario",
         "categoria": "Poesía",
         "ejemplares": 1
+    },
+
+    {
+        "titulo": "Poetas Chiquimultecos",
+        "autor": "Gilberto Lima",
+        "categoria": "Poesía",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "Poemas del desterrado",
+        "autor": "Gustavo Wyld",
+        "categoria": "Poesía",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "20 poemas de amor y una canción desesperada",
+        "autor": "Pablo Neruda",
+        "categoria": "Poesía",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "El boemillero",
+        "autor": "Jose viatoro",
+        "categoria": "Poesía",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "Pinceladas Vanidosas",
+        "autor": "Francisco Morales",
+        "categoria": "Poesía",
+        "ejemplares": 1
     }
 
+    
     # TEATRO
 
     {
@@ -282,7 +355,15 @@ LIBROS = [
         "autor": "Pedro Calderón de la Barca",
         "categoria": "Teatro / obras dramáticas",
         "ejemplares": 2
+    },
+
+    {
+        "titulo": "Romeo y Julieta",
+        "autor": "Williamm Shakespeare",
+        "categoria": "Teatro / obras drámaticas",
+        "ejemplares": 2
     }
+
 
     # OBRAS RELIGIOSAS
 
@@ -297,7 +378,7 @@ LIBROS = [
         "titulo": "Santa Biblia",
         "autor": "Varios",
         "categoria": "Obras religiosas y tradicionales",
-        "ejemplares": 2
+        "ejemplares": 3
     },
     
     {
@@ -305,7 +386,23 @@ LIBROS = [
         "autor": "Neil Anderson",
         "categoria": "Obras religiosas y tradicionales",
         "ejemplares": 1
+    },
+
+    {
+        "titulo": "School Bible",
+        "autor": "Varios",
+        "categoria": "Obras religiosas y tradiconales",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "El departamento del Quiché bajo la dictadura liberal",
+        "autor": "Jean Piel",
+        "categoria": "Obras religiosas y tradicionales",
+        "ejemplares": 1
     }
+
+
 
     # HISTORIA
 
@@ -341,7 +438,7 @@ LIBROS = [
         "titulo": "El señor presidente",
         "autor": "Miguel Angel Asturias",
         "categoria": "Historia / autobiografia / testimonio",
-        "ejemplares": 1
+        "ejemplares": 3
     },
 
     {
@@ -355,6 +452,34 @@ LIBROS = [
         "titulo": "La bibliografia guatemalteca",
         "autor": "Horacio Marroquin",
         "categoria": "Historia / autobiografia / testimonio",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "Nuevo signo",
+        "autor": "Maria del Rosario Arranz",
+        "categoria": "Historia / autobiografia/ testimonio",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "Biografía de Magdalena Spinola",
+        "autor": "Clara Luz de Soto",
+        "categoria": "Historia / autobiografia / testimonio",
+        "ejemplares": 2
+    },
+
+    {
+        "titulo": "Enrique Gómes Carrilo",
+        "autor": "Alfonso Barrientos",
+        "categoria": "Historia / autobiografia/ testimonio",
+        "ejemplares": 1
+    },
+
+    {
+        "titulo": "Contrastes",
+        "autor": "Ulises Guerrero",
+        "categoria": "Historia / autobiografia/ testimonio",
         "ejemplares": 1
     }
 
@@ -426,7 +551,7 @@ LIBROS = [
         "titulo": "Date un chance",
         "autor": "Clemente de Leon",
         "categoria": "Motivacionales",
-        "ejemplares": 4
+        "ejemplares": 10
     },
 
     {
@@ -440,7 +565,7 @@ LIBROS = [
         "titulo": "El rinoceronte",
         "autor": "Scott Alexander",
         "categoria": "Motivacionales",
-        "ejemplares": 1
+        "ejemplares": 3
     },
 
     {
@@ -491,7 +616,15 @@ LIBROS = [
         "autor": "Spencer Johnson",
         "categoria": "Motivacionales",
         "ejemplares": 1
+    },
+
+    {
+        "titulo": "La tentativa del león y el exito de su empresa",
+        "autor": "Fray De Cordoba",
+        "categoria": "Motivacionales",
+        "ejemplares": 8
     }
+
 
     # IDIOMAS Y DICCIONARIOS
 
