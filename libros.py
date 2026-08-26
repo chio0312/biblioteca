@@ -1,5 +1,7 @@
 LIBROS = [
 
+    # NOVELAS Y NARRATIVA
+
     {
         "titulo": "Lazarillo de Tormes",
         "autor": "Anónimo",
@@ -160,7 +162,7 @@ LIBROS = [
         "categoria": "Novelas y narrativas",
         "ejemplares": 1
     },
- 
+
     {
         "titulo": "El laboratorio secreto",
         "autor": "Lluis Prats",
@@ -245,8 +247,6 @@ LIBROS = [
         "ejemplares": 1
     }
 
-
-
     # POESÍA
 
     {
@@ -327,7 +327,7 @@ LIBROS = [
     },
 
     {
-        "titulo": "El boemillero",
+        "titulo": "El bombillero",
         "autor": "Jose viatoro",
         "categoria": "Poesía",
         "ejemplares": 1
@@ -364,7 +364,6 @@ LIBROS = [
         "ejemplares": 2
     }
 
-
     # OBRAS RELIGIOSAS
 
     {
@@ -380,7 +379,7 @@ LIBROS = [
         "categoria": "Obras religiosas y tradicionales",
         "ejemplares": 3
     },
-    
+
     {
         "titulo": "Rompiendo las cadenas",
         "autor": "Neil Anderson",
@@ -402,8 +401,6 @@ LIBROS = [
         "ejemplares": 1
     }
 
-
-
     # HISTORIA
 
     {
@@ -417,7 +414,7 @@ LIBROS = [
         "titulo": "La hija del adelantado",
         "autor": "Jose Milla",
         "categoria": "Historia / autobiografia / testimonio",
-        "ejemplares": 2 
+        "ejemplares": 2
     },
 
     {
@@ -489,14 +486,7 @@ LIBROS = [
         "titulo": "Constituciones políticas",
         "autor": "Varios",
         "categoria": "Derecho / documentos políticos",
-        "ejemplares": 2
-    },
-
-    {
-        "titulo": "Constituciones políticas",
-        "autor": "Varios",
-        "categoria": "Derecho / documentos políticos",
-        "ejemplares": 2
+        "ejemplares": 4
     },
 
     {
@@ -504,7 +494,8 @@ LIBROS = [
         "autor": "Varios",
         "categoria": "Derecho / documentos políticos",
         "ejemplares": 1
-    }
+    },
+
 
     # CUENTOS Y LEYENDAS
 
@@ -534,16 +525,18 @@ LIBROS = [
         "autor": "Miguel Angel Asturias",
         "categoria": "Cuentos y Leyendas",
         "ejemplares": 1
-    }
+    },
 
-    #BIOGRAFIAS
+
+    # BIOGRAFÍAS
 
     {
         "titulo": "1000 Biografias Abreviadas",
         "autor": "Juan Regla Campistol",
         "categoria": "Biografias",
         "ejemplares": 1
-    }
+    },
+
 
     # MOTIVACIÓN
 
@@ -610,7 +603,6 @@ LIBROS = [
         "ejemplares": 1
     },
 
-
     {
         "titulo": "Quién se ha llevado mi queso?",
         "autor": "Spencer Johnson",
@@ -654,14 +646,15 @@ LIBROS = [
         "autor": "Berta Avila",
         "categoria": "Idiomas",
         "ejemplares": 1
-    }
-       
+    },
+
+
     # GEOGRAFÍA
+
     {
         "titulo": "Guía Visualizada CENTROAMÉRICA",
         "autor": "Julio Piedrasanta",
         "categoria": "Geografía",
         "ejemplares": 1
     }
-    
 ]
