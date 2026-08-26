@@ -494,7 +494,7 @@ LIBROS = [
         "autor": "Varios",
         "categoria": "Derecho / documentos políticos",
         "ejemplares": 1
-    },
+    }
 
 
     # CUENTOS Y LEYENDAS
@@ -525,7 +525,7 @@ LIBROS = [
         "autor": "Miguel Angel Asturias",
         "categoria": "Cuentos y Leyendas",
         "ejemplares": 1
-    },
+    }
 
 
     # BIOGRAFÍAS
@@ -535,7 +535,7 @@ LIBROS = [
         "autor": "Juan Regla Campistol",
         "categoria": "Biografias",
         "ejemplares": 1
-    },
+    }
 
 
     # MOTIVACIÓN
@@ -646,7 +646,7 @@ LIBROS = [
         "autor": "Berta Avila",
         "categoria": "Idiomas",
         "ejemplares": 1
-    },
+    }
 
 
     # GEOGRAFÍA
